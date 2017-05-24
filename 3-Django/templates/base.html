@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  	<meta charset="utf-8">
+  	<title>{% block title %} {% endblock title %}</title>
+
+  	<!-- Stylesheets -->
+  	<link rel="stylesheet" href="{% static '/css/semantic.css' %}">
+  	<link rel="stylesheet" href="{% static '/css/recipe.css' %}">
+  </head>
+
+  <body>
+  	<div id="content">
+  		{% include '_sidebar.html' %}
+
+      {% block content %} {% endblock content %}
+
+  	</div>
+  </body>
+</html>

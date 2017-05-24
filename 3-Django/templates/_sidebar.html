@@ -1,0 +1,15 @@
+<div id="sidebar" class="ui left vertical inverted menu">
+  <div class="toc">
+    {% for category in category_list %}
+      <div class="item">
+        <div class="header">{{ category.name_plural }}</div>
+        <div class="menu">
+          {% for r in category.recipes.all %}
+            <a class="{% if r == recipe %}active{% endif %} item"
+               href="{% url 'recipes:detail' r.slug %}">{{ r }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

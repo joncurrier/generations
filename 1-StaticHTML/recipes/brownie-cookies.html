@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  	<meta charset="utf-8">
+  	<title>Recipes</title>
+
+  	<!-- Stylesheets -->
+  	<link rel="stylesheet" href="/css/semantic.css">
+  	<link rel="stylesheet" href="/css/recipe.css">
+  </head>
+
+  <body>
+
+  	<div>
+
+  		<div id="content">
+
+  			<!-- Sidebar -->
+  			<div id="sidebar" class="ui left vertical inverted menu">
+          <div class="toc">
+      			<div class="item">
+      				<div class="header">Appetizers</div>
+      				<div class="menu">
+      					<a class="item" href="/recipes/artichoke-dip.html">Artichoke Dip</a>
+      				</div>
+            </div>
+            <div class="item">
+              <div class="header">Pizza</div>
+      				<div class="menu">
+      					<a class="item" href="/recipes/neapolitan-pizza-dough.html">Neapolitan Pizza Dough</a>
+      				</div>
+      			</div>
+            <div class="item">
+              <div class="header">Desserts</div>
+      				<div class="menu">
+      					<a class="item" href="/recipes/brownie-cookies.html">Brownie Cookies</a>
+      				</div>
+      			</div>
+      		</div>
+  			</div>
+
+  			<div id="recipe-container">
+  				<div id="recipe">
+            <div class="ui basic center aligned segment">
+      				<h1 class="ui header">{{ recipe.title }}</h1>
+      	      <p>{{ recipe.description }}</p>
+      			</div>
+      			<div class="ui stackable grid">
+      				<div class="six wide column">
+      					<h2 class="ui header">Ingredients</h2>
+      					<div class="ui list">
+      						<div class="ui item" v-for="ingredient in recipe.ingredients">
+      							<i class="square outline icon"></i>
+      							<div class="content">
+      								{{ ingredient.quantity }}
+      								{{ ingredient.unit }}
+      								{{ ingredient.food }}
+      								<span v-if="ingredient.prep_instructions">({{ ingredient.prep_instructions }})</span>
+      							</div>
+      						</div>
+      					</div>
+      				</div>
+      				<div class="ten wide column">
+      					<h2 class="ui header">Directions</h2>
+      					<ol class="ui list">
+      						<li v-for="direction in recipe.directions">
+      							{{ direction.text }}
+      						</li>
+      					</ol>
+      				</div>
+      			</div>
+      		</div>
+  			</div>
+
+  		</div>
+
+  	</div>
+
+  </body>
+
+</html>

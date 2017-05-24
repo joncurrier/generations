@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ recipe }}
+{% endblock title %}
+
+{% block content %}
+<div id="recipe-container">
+  <div id="recipe">
+    <div class="ui basic center aligned segment">
+      <h1 class="ui header">{{ recipe.title }}</h1>
+      <p>{{ recipe.description }}</p>
+    </div>
+    <div class="ui stackable grid">
+      <div class="six wide column">
+        <h2 class="ui header">Ingredients</h2>
+        <div class="ui relaxed list">
+          {% for ingredient in recipe.ingredients.all %}
+            <div class="ui item">
+              <i class="square outline icon"></i>
+              <div class="content">
+                {{ ingredient.text }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="ten wide column">
+        <h2 class="ui header">Directions</h2>
+        <ol class="ui relaxed list">
+          {% for direction in recipe.directions.all %}
+            <li class="item">
+              {{ direction.text }}
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
