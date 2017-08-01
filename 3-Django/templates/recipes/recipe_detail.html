@@ -10,8 +10,13 @@
     <div class="ui basic center aligned segment">
       <h1 class="ui header">{{ recipe.title }}</h1>
       <p>{{ recipe.description }}</p>
+      {% if recipe.yields %}
+        <p>
+          <strong>Yields:</strong> {{ recipe.yields }}
+        </p>
+      {% endif %}
       {% if recipe.prep_time or recipe.wait_time or recipe.cook_time %}
-        <div>
+        <div class="ui message">
           <i class="wait icon"></i>
           {% if recipe.prep_time %}
             <span class="timer"><strong>Prep:</strong> {{ recipe.get_prep_time }}</span>
