@@ -1,0 +1,26 @@
+{
+  "Title": "Brownie Cookies",
+  "Category": "Desserts",
+  "Description": "A small-batch recipe for gluten-free (but not sugar-free!) chocolate brownie cookies.",
+  "Yields": "10-12 cookies",
+  "PrepTime": "10 minutes",
+  "CookTime": "17 minutes",
+  "Ingredients": [
+    "100 grams powdered sugar",
+    "37 grams unsweetened cocoa powder",
+    "2 large egg whites",
+    "1/4 teaspoon vanilla extract",
+    "1/8 teaspoon salt",
+    "3 tablespoons chocolate chips"
+  ],
+  "Directions": [
+    "Preheat oven to 350°F.",
+    "In a medium bowl, whisk together the powdered sugar, cocoa powder, and salt until combined. Make sure no clumps remain.",
+    "In another medium bowl, using an electric hand mixer on high speed, beat the egg whites and vanilla together until soft peaks form.",
+    "One half at a time, pour the solid mixture into the egg whites and gently fold together until moistened and incorporated, taking care not to overmix.",
+    "Gently mix in the chocolate chips.",
+    "Spoon the batter in ten to twelve equal sized portions onto a cookie sheet lined with wax paper.",
+    "Bake for 17 minutes or until the tops of the cookies are dry and the edges have just begun to crack.",
+    "Remove from oven and let cool on the cookie sheet for five minutes, then transfer to a cooling rack."
+  ]
+}

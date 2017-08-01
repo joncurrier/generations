@@ -1,0 +1,19 @@
+{
+  "Title": "Basil Pesto",
+  "Category": "Sauces",
+  "Description": "A fresh-tasting sauce made from basil leaves that goes well with pasta, bread, tomatoes, and seafood.",
+  "Yields": "1 pint",
+  "PrepTime": "10 minutes",
+  "Ingredients": [
+    "3 ounces fresh basil leaves",
+    "2 ounces Parmesan (grated)",
+    "3 ounces pine nuts (toasted)",
+    "1/2 cups olive oil",
+    "1 teaspoon lemon zest",
+    "1 clove garlic"
+  ],
+  "Directions": [
+    "Bring a large pot of water to a vigorous boil, then blanche the basil leaves for thirty seconds. Immediately transfer them to a bowl of ice water.",
+    "Squeeze the basil leaves dry using paper towels, then combine all the ingredients in a food processor and blend on high speed until desired consistency is reached."
+  ]
+}
