@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_recipe_db',
-        'USER': 'django_recipe_user',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'Recipe',
+        'USER': 'joncurrier',
+        'PASSWORD': os.environ['POSTGRES_PW'],
+        'HOST': 'azl-recipe.cjts8jo78acm.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
