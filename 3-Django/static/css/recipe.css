@@ -18,3 +18,7 @@
   max-width: 700px;
   margin: 0 auto;
 }
+
+span.timer + span.timer {
+    margin-left: 5px;
+}

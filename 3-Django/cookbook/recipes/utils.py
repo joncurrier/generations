@@ -12,12 +12,24 @@ def format_duration(duration):
     if duration is None:
         return None
 
+    print (duration.days)
+
     t = duration.seconds
+    d = duration.days
     hours = t // 3600
     minutes = (t % 3600) // 60
     seconds = t % 60
 
-    if t < 60:
+    if d == 1:
+        if hours == 0:
+            return '1 day'
+        elif hours == 1:
+            return '1 day and 1 hour'
+        else:
+            return '1 day and {} hours'.format(hours)
+    elif d > 1:
+        return '{} days'.format(d)
+    elif t < 60:
         return '{} seconds'.format(seconds)
     elif t == 60:
         return '1 minute'

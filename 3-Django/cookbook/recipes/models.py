@@ -35,6 +35,15 @@ class Recipe(models.Model):
                                  on_delete=models.CASCADE,
                                  related_name='recipes')
 
+    def get_prep_time(self):
+        return utils.format_duration(self.prep_time)
+
+    def get_wait_time(self):
+        return utils.format_duration(self.wait_time)
+
+    def get_cook_time(self):
+        return utils.format_duration(self.cook_time)
+
     def __str__(self):
         return self.title
 
@@ -47,7 +56,7 @@ class Ingredient(models.Model):
                                on_delete=models.CASCADE,
                                related_name='ingredients')
     quantity = models.FloatField()
-    unit = models.CharField(max_length=10)
+    unit = models.CharField(max_length=50, blank=True)
     food = models.CharField(max_length=50)
 
     def text(self):
@@ -60,6 +69,9 @@ class Ingredient(models.Model):
             unit=str(self.unit),
             food=str(self.food),
         )
+
+    class Meta:
+        ordering = ('id', )
 
 
 class Direction(models.Model):
