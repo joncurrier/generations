@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/semantic.css">
+  <link rel="stylesheet" href="/css/recipe.css">
+</head>
+
+<body>
+  <div id="content">
+    <div id="sidebar" class="ui left vertical inverted menu">
+      <vue-sidebar></vue-sidebar>
+    </div>
+    <div id="recipe-container">
+      <div id="recipe">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="x-template" id="sidebar-template">
+  <div class="toc">
+    <div class="item" v-for="category in categories">
+      <div class="header">{{ category.name_plural }}</div>
+      <div class="menu">
+        <router-link :to="{ name: 'recipe', params: { slug: recipe.slug }}" activeClass="active" class="item" v-for="recipe in category.recipes">
+          {{ recipe.title }}
+        </router-link>
+      </div>
+    </div>
+  </div>
+</script>
+<script type="x-template" id="recipe-template">
+  <div>
+    <div class="ui basic center aligned segment">
+      <h1 class="ui header">{{ recipe.title }}</h1>
+      <p>{{ recipe.description }}</p>
+      <p v-if="recipe.yields">
+        <strong>Yields:</strong> {{ recipe.yields }}
+      </p>
+      <div class="ui message">
+        <i class="wait icon"></i>
+        <span v-if="recipe.get_prep_time" class="timer"><strong>Prep:</strong> {{ recipe.get_prep_time }}</span>
+        <span v-if="recipe.get_wait_time" class="timer"><strong>Wait:</strong> {{ recipe.get_wait_time }}</span>
+        <span v-if="recipe.get_cook_time" class="timer"><strong>Cook:</strong> {{ recipe.get_cook_time }}</span>
+      </div>
+    </div>
+    <div class="ui stackable grid">
+      <div class="six wide column">
+        <h2 class="ui header">Ingredients</h2>
+        <div class="ui relaxed list">
+          <div class="ui item" v-for="ingredient in recipe.ingredients">
+            <i class="square outline icon"></i>
+            <div class="content">
+              {{ ingredient.text }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ten wide column">
+        <h2 class="ui header">Directions</h2>
+        <ol class="ui relaxed list">
+          <li v-for="direction in recipe.directions" class="item">
+            {{ direction.text }}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</script>
+<script src="/js/dist/axios.js"></script>
+<script src="/js/dist/vue.js"></script>
+<script src="/js/dist/vue-router.js"></script>
+<script src="/js/recipe.js"></script>
+
+</html>
