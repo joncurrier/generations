@@ -132,3 +132,12 @@ STATICFILES_DIRS = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# REST Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'recipes.renderers.PrettyJsonRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
