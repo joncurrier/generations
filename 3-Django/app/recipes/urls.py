@@ -1,10 +1,11 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
+app_name = 'recipes'
 urlpatterns = [
     # ex: /artichoke-dip/
-    url(r'^(?P<slug>[-\w\d]+)/$',
+    path('<slug:slug>/',
         views.RecipeDetailView.as_view(),
         name='detail'),
 ]
