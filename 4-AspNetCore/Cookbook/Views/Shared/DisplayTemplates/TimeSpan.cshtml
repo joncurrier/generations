@@ -1,0 +1,9 @@
+﻿@model TimeSpan?
+@using Humanizer
+@{ 
+    if (Model.HasValue)
+    {
+        string display = Model.Value.Humanize();
+        @display
+    }
+}

@@ -1,0 +1,75 @@
+@model Cookbook.Models.Recipe
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div id="recipe-container">
+    <div id="recipe">
+        <div class="ui basic center aligned segment">
+            <h1 class="ui header">@Html.DisplayFor(r => r.Title)</h1>
+            <p>@Html.DisplayFor(r => r.Description)</p>
+			@if (Model.Yields.Length > 0)
+			{
+                <p>
+				    <strong>Yields:</strong>
+				    @Html.DisplayFor(r => r.Yields)
+			    </p>
+			}
+            @if (Model.PrepTime.HasValue || Model.WaitTime.HasValue || Model.CookTime.HasValue)
+            {
+                <div class="ui message">
+			    <i class="wait icon"></i>
+                @if (Model.PrepTime.HasValue)
+                {
+                    <span class="timer">
+                        <strong>Prep:</strong>
+                        @Html.DisplayFor(r => r.GetPrepTime)
+                    </span>
+                }
+                @if (Model.WaitTime.HasValue)
+                {
+                    <span class="timer">
+                        <strong>Wait:</strong>
+                        @Html.DisplayFor(r => r.GetWaitTime)
+                    </span>
+                }
+                @if (Model.CookTime.HasValue)
+                {
+                    <span class="timer">
+                        <strong>Cook:</strong>
+                        @Html.DisplayFor(r => r.GetCookTime)
+                    </span>
+                }
+                </div>
+			}
+        </div>
+        <div class="ui stackable grid">
+            <div class="six wide column">
+                <h2 class="ui header">Ingredients</h2>
+                <div class="ui relaxed list">
+                    @foreach (var ingredient in Model.Ingredients)
+                    {
+                        <div class="ui item">
+                            <i class="square outline icon"></i>
+                            <div class="content">
+                                @Html.DisplayFor(r => ingredient)
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="ten wide column">
+                <h2 class="ui header">Directions</h2>
+                <ol class="ui relaxed list">
+                    @foreach (var direction in Model.Directions.OrderBy(d => d.Ordinal))
+                    {
+                        <li class="item">
+                            @direction.Text
+                        </li>
+                    }
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

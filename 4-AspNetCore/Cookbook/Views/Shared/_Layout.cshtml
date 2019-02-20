@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>4 - @ViewData["Title"]</title>
+
+    <!-- Stylesheets -->
+    @if (ViewData.Model is Cookbook.Models.Recipe)
+    {
+      <link rel="stylesheet" href="~/css/semantic.css">
+      <link rel="stylesheet" href="~/css/recipe.css">
+    }
+    else
+    {
+      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="~/css/site.css" />
+    }
+</head>
+<body>
+    <div id="content">
+        @if (ViewData.Model is Cookbook.Models.Recipe)
+        {
+            @await Component.InvokeAsync("Sidebar")
+        }
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

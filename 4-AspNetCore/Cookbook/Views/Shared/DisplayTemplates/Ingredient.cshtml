@@ -1,0 +1,6 @@
+﻿@model Cookbook.Models.Ingredient
+@using Cookbook.Utils
+@{
+    var ingredient = IngredientFormatter.FormatIngredient(Model.Quantity, Model.Unit, Model.Food);
+    @ingredient;
+}

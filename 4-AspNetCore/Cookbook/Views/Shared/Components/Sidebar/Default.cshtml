@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Cookbook.Models.Category>
+
+<div id="sidebar" class="ui left vertical inverted menu">
+    <div class="toc">
+        @foreach (var category in Model)
+        {
+            @if (category != null)
+            {
+                <div class="item">
+                    <div class="header">@Html.DisplayFor(x => category.NamePlural)</div>
+                    <div class="menu">
+                        @foreach (var recipe in @category.Recipes)
+                        {
+                            bool isActive = false;
+                            @if (ViewData["recipeID"] != null)
+                            {
+                                isActive = (int)ViewData["recipeID"] == recipe.ID;
+                            }
+                            <a class="@(isActive ? "active": null) item"
+                               asp-route="recipe"
+                               asp-route-slug="@recipe.Slug">
+                                @Html.DisplayFor(x => recipe.Title)
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
