@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 
 namespace CookbookApi
@@ -28,14 +29,20 @@ namespace CookbookApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddDbContext<CookbookContext>(options =>
                     options.UseNpgsql(Configuration["DefaultConnection"]));
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.Formatting = Formatting.Indented;
-                });
+                .AddJsonOptions(
+                    options => {
+                        options.SerializerSettings.ContractResolver = new DefaultContractResolver()
+                        {
+                            NamingStrategy = new SnakeCaseNamingStrategy()
+		                };
+                        options.SerializerSettings.Formatting = Formatting.Indented;
+                    }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +58,7 @@ namespace CookbookApi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod());
             app.UseMvc();
         }
     }
